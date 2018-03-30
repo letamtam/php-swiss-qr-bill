@@ -64,4 +64,9 @@ if (false === $qrBill->isValid()) {
 }
 
 // Get QR code image
-$qrBill->getQrCode()->writeFile(__DIR__ . '/qr.png');
+#$qrBill->getQrCode()->writeFile(__DIR__ . '/qr.png');
+
+$htmlOutput = new QrBill\PaymentPart\HtmlOutput\HtmlOutput();
+$htmlOutput->setQrBill($qrBill);
+$htmlOutput->setLanguage('de');
+print $htmlOutput->getPaymentPart();
